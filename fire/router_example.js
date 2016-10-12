@@ -26,6 +26,15 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
         }
     };
 
+    $scope.incrementUpvotes = function(index) {
+      var id = $scope.talks[index].$id;
+      var talk = $scope.talks.$getRecord(id);
+      if (talk) {
+        talk.votes += 1;
+        $scope.talks.$save(talk);
+      }
+    };
+
     $scope.trustHTML = function(html) {
         var trusted = $sce.trustAsHtml(html);
         return trusted;
@@ -54,7 +63,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/jean_b_brigham.png",
             "comment": [],
-            "vote": "0"
+            "votes": 0
           }, {
             "session": "general-women",
             "title": "The Master Healer",
@@ -72,7 +81,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
               ],
             "image":"images/caren_sthep.png", 
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "general-women",
             "title": "Rise Up in Strength, Sisters in Zion",
@@ -90,7 +99,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/bonie_os.png",  
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "general-women",
             "title": "Fourth Floor, Last Door",
@@ -103,7 +112,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/uchtdorf.png",  
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "saturday-morning-session",
             "title": "O How Great the Plan of Our God!",
@@ -119,7 +128,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/uchtdorf.png",  
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "saturday-morning-session",
             "title": "\"Come, Follow Me\" by Practicing Christian Love and Service",
@@ -135,7 +144,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/rober_d_hales.png", 
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "saturday-morning-session",
             "title": "The Soul's Sincere Desire",
@@ -148,7 +157,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/carol_f_mc.png",  
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "saturday-morning-session",
             "title": "\"A Choice Seer Will I Raise Up\"",
@@ -164,7 +173,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/christensen.png", 
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "saturday-morning-session",
             "title": "The Lord Jesus Christ Teaches Us to Pray",
@@ -180,7 +189,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/juan_uceda.png",  
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "saturday-afternoon-session",
             "title": "Valiant in the Testimony of Jesus",
@@ -196,7 +205,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/quentin.png", 
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "saturday-afternoon-session",
             "title": "Look to the Book, Look to the Lord",
@@ -212,7 +221,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/gary.png",  
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "saturday-afternoon-session",
             "title": "\"Abide in My Love\"",
@@ -228,7 +237,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/tod.png", 
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "saturday-afternoon-session",
             "title": "For Our Spiritual Development and Learning",
@@ -244,7 +253,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/mark.png",  
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "sunday-morning-session",
             "title": "The Perfect Path to Happiness",
@@ -260,7 +269,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/monson.png",  
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "sunday-morning-session",
             "title": "Joy and Spiritual Survival",
@@ -276,7 +285,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/russell.png", 
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "sunday-morning-session",
             "title": "The Sacrament Can Help Us Become Holy",
@@ -292,7 +301,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/glesses.png", 
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "sunday-morning-session",
             "title": "The Great Plan of Redemption",
@@ -308,7 +317,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/linda.png", 
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "sunday-afternoon-session",
             "title": "\"If Ye Had Known Me\"",
@@ -324,7 +333,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/bednard.png", 
             "comment": [],
-            "vote": "0"
+            "votes": 0
             },{
             "session": "sunday-afternoon-session",
             "title": "The Doctrine of Christ",
@@ -340,7 +349,7 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
             ],
             "image":"images/brian.png", 
             "comment": [],
-            "vote": "0"
+            "votes": 0
             }
 
           ]
@@ -356,25 +365,55 @@ app.controller('MainCtrl', ['$scope', '$sce', '$firebaseArray', '$firebaseObject
     };
 }]);
 
-app.controller('PostCtrl', ['$scope', '$stateParams', '$sce', '$firebaseObject', function($scope, $stateParams, $sce, $firebaseObject) {
+app.controller('PostCtrl', ['$scope', '$stateParams', '$sce', '$firebaseObject', '$firebaseArray', function($scope, $stateParams, $sce, $firebaseObject, $firebaseArray) {
+    var talkLoaded = false;
+    var commentsLoaded = false;
+
     var ref = new Firebase("https://creative3-2ce63.firebaseio.com/talks/" + $stateParams.id);
+    var commentRef = ref.child("comment");
+
     $scope.talk = $firebaseObject(ref);
+    $scope.commentList = $firebaseArray(commentRef);
+
     $scope.talk.$loaded().then(function() {
-        console.log($scope.talk);
-        $scope.text = '';
-        for (var i = 0; i < $scope.talk.fulltext.length; i++) {
-            $scope.text += $scope.talk.fulltext[i];
-        }
+      talkLoaded = true;
+      $scope.text = '';
+      for (var i = 0; i < $scope.talk.fulltext.length; i++) {
+        $scope.text += $scope.talk.fulltext[i];
+      }
+
+      $scope.comments = $scope.talk.comment;
     });
 
-    $scope.trustHTML = function(html) {
-        var trusted = $sce.trustAsHtml(html);
-        return trusted;
+    $scope.commentList.$loaded().then(function() {
+      commentsLoaded = true;
+    });
+
+    $scope.loaded = function() {
+      return talkLoaded && commentsLoaded;
     }
+
+    $scope.trustHTML = function(html) {
+      var trusted = $sce.trustAsHtml(html);
+      return trusted;
+    }
+
     $scope.addComment = function() {
-        
+      if ($scope.message) {
+        $scope.commentList.$add({
+          body: $scope.message,
+          votes: 0,
+          timeStamp: Date.now(),
+        });
+      }
     };
-    $scope.incrementUpvotes = function(comment) {
-        
+
+    $scope.incrementUpvotes = function(index) {
+      var id = $scope.commentList[index].$id;
+      var comment = $scope.commentList.$getRecord(id);
+      if (comment) {
+        comment.votes += 1;
+        $scope.commentList.$save(comment);
+      }
     };
 }]);
