@@ -1,0 +1,2 @@
+mongoimport --db main --collection talks --drop --file ~/Desktop/talks.json
+
