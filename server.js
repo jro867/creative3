@@ -9,12 +9,12 @@ app.use(express.static(__dirname + '/'));
 
 init();
 
-app.get('/', function(req, res){
-
+app.get('/getdata', function(req, res){
 	pullTalks().then(function(data){
 		res.send(data);
+		
 	});
-
+	res.sendFile('real_index.html');
 });
 
 app.listen(port, function() {
@@ -37,15 +37,15 @@ function init(){
 		}else{
 			console.log("connected");
 			database = db;
-			pullTalks(db);
+			// pullTalks(db);
 		} 
 	});
 }
 
-function pullTalks(db){
-	console.log("pulltalks.....");
-	// var cursor = getDataBase().collection('talks').find({}, {_id:0});
-	var cursor = db.collection('talks').find({}, {_id:0});
+function pullTalks(){
+	var cursor = getDataBase().collection('talks').find({}, {_id:0});
+	// var cursor = db.collection('talks').find({}, {_id:0});
+	console.log("talks");
 
 	return new Promise(function(resolve, reject){
 		cursor.each(function(err,doc){
@@ -53,7 +53,7 @@ function pullTalks(db){
 				console.dir(doc);
 				resolve(doc);
 			} 
-
+			console.log("outside if");
 		});
 	});
 }
