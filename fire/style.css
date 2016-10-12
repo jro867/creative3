@@ -1,7 +1,14 @@
+body{
+	background-image:url("images/body_image.jpg");
+	background-repeat: no-repeat;
+    background-position: 70% 70%; 
+}
+
 .messageBlock {
 	display: block;
     padding: 9.5px;
-    margin: 0 0 10px;
+    /*margin: 10px 0 10px 0px;*/
+    margin-top: 15px;
     font-size: 13px;
     line-height: 1.42857143;
     color: #333;
@@ -33,4 +40,11 @@
 
 .messageText {
 	font-size: 14px;
+}
+
+.jumbotron{
+	background-color: #f4511e;
+    color: #fff;
+    padding: 100px 25px;
+    font-family: Montserrat, sans-serif;
 }

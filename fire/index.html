@@ -2,7 +2,7 @@
 <html lang="en" ng-app="chattyApp" data-framework="firebase">
     <head>
         <meta charset="utf-8">
-        <title>Confrence Thoughts</title>
+        <title>Conference Thoughts</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel='stylesheet' href='style.css' />
@@ -15,10 +15,13 @@
         <script src='app.js'></script>
     </head>
     <body ng-controller="chattyCtrl">
-        <button ng-click="resetDB()">Reset</button>
-        <h1>Confrence Thoughts</h1>
+        <!-- <button ng-click="resetDB()">Reset</button> -->
+        <div class="jumbotron text-center">
+          <h1>Conference Thoughts</h1> 
+          <p>Tell us which one is your favorite</p>
+        </div>
 
-        <div class="messageBlock" ng-repeat="talk in talks">
+        <div class="messageBlock container" ng-repeat="talk in talks">
             <div class="messageContent">
                 <h3 class="messageSender" ng-bind-html="trustHTML(talk.title)"></h3>
                 <span class="messageText" ng-bind-html="trustHTML(talk.snip)"></span>
