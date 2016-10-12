@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" ng-app="chattyApp" data-framework="firebase">
+    <head>
+        <meta charset="utf-8">
+        <title>Confrence Thoughts</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel='stylesheet' href='style.css' />
+        <style>[ng-cloak] { display: none; }</style>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+        <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+        <script src='app.js'></script>
+    </head>
+    <body ng-controller="chattyCtrl">
+        <button ng-click="resetDB()">Reset</button>
+        <h1>Confrence Thoughts</h1>
+
+        <div class="messageBlock" ng-repeat="talk in talks">
+            <div class="messageContent">
+                <h3 class="messageSender" ng-bind-html="trustHTML(talk.title)"></h3>
+                <span class="messageText" ng-bind-html="trustHTML(talk.snip)"></span>
+            </div>
+        </div>
+    </body>
+</html>
