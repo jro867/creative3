@@ -1,37 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+<html>
+<head>
+  <title>Confrence Thoughts</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel='stylesheet' href='style.css' />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+  <script src="router_example.js"></script>
+  <style>
+    h1, h3 {
+      text-align: center;
+    }
 
-    <!-- Bootstrap -->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-     <!-- <link rel="stylesheet" href="style.css"> -->
-  </head>
+    .isNew {
+      animation: blink 1.5s ease;
+    }
 
-  <script>
+    @keyframes blink {
+      0% {
+        background: #ffa;
+      }
+      100% {
+        background: #fff;
+      }
+    }
+  </style>
+</head>
+<body ng-app="News" ng-controller="MainCtrl">
+  <div class="jumbotron text-center">
+    <h1>Conference Thoughts</h1> 
+    <p>Tell us which one is your favorite</p>
+  </div>
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<ui-view></ui-view>
+</div>
+</div>
+<script type="text/ng-template" id="/home.html">
 
-
-  </script>
-  
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-  <!-- <body  ng-app="rate-your-talk" ng-controller="searchController"> -->
-  <body>
-
-
-
-      <div id="main-app-body" class="container">
-        
-qweqweqweqweqweqweqweqweqweqweqweqw
-      </div>
-    
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-     <script src="script.js"></script>
-  </body>
+    <button class="btn btn-info resetBtn" ng-click="resetDB()" title="Reset"></button>
 
+  <div class="messageBlock container" ng-repeat="talk in talks">
+      <div class="messageContent">
+          <h3 class="messageSender" ng-bind-html="trustHTML(talk.title)"></h3>
+          <img ng-src={{talk.image}} class="talkPic"/><span class="messageText" ng-bind-html="trustHTML(talk.snip)"></span>
+          <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes($index)"></span> {{talk.votes}}
+          <span><a href="#/posts/{{talk.$id}}" class="commentSpan">Comments</a></span>
+      </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="/posts.html">
+    <div ng-show="loaded()">
+      <div class="page-header">
+        <h3 class="messageSender" ng-bind-html="trustHTML(talk.title)"></h3>
+      </div>
+       <img ng-src={{talk.image}} class="talkPicFull"/>
+      <div ng-reapeat="paragraph in text" ng-bind-html="trustHTML(text)" class="fullParagraph"></div>
+
+      <div class="commentSpace" ng-repeat="comment in talk.comment | orderBy:'-votes'">
+        <span class="glyphicon glyphicon-thumbs-up"
+          ng-click="incrementUpvotes($index)"></span>
+          {{comment.votes}}
+        <span style="font-size:20px; margin-left:10px;">
+          {{comment.body}}
+        </span>
+      </div>
+      <form ng-submit="addComment()"
+        style="margin-top:30px;">
+        <h3 class="addNewCommentTitle">Add a new comment</h3>
+
+        <div class="form-group">
+          <input type="text"
+          class="form-control"
+          placeholder="Comment"
+          ng-model="message"></input>
+        </div>
+        <button type="submit" class="btn btn-primary postBtn">Post</button>
+      </form>
+    </div>
+    <div ng-show="!loaded()">Loading...</div>
+
+    </div><a class="backBtn" href="#/">Back</a></div>
+  </script>
+</body>
 </html>

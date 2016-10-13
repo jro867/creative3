@@ -1,7 +1,177 @@
 body{
-  background-color: #595959;
+	background-image:url("images/body_image.jpg");
+	background-repeat: no-repeat;
+    background-position: 70% 70%; 
 }
 
-#main-app-body{
+a:hover{
+	text-decoration: none;
+	color:white;
+}
+
+.addNewCommentTitle{
+	background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px 4px 0px 0px;
+    display: block;
+    margin-top: 15px;
+    opacity: 0.5;
+    font-weight: bold;
+}
+
+.commentSpace{
+	background-color:#92a8cc;
+    border: 1px solid #ccc;
+    border-radius: 4px 4px 0px 0px;
+    display: block;
+    /*margin-top: 15px;*/
+    opacity: 0.8;
+    padding-left:5px; 
+}
+
+.commentSpan:hover{
+    color:red;
+}
+
+.resetBtn{
+	background-image: url("images/refresh.png");
+	background-repeat: no-repeat;
+	background-position:12px;
+	width:60px;
+	height: 40px;
+	border:solid 1px black;
+	/*padding-<left|right>: <width of image>px;*/
+}
+
+.talkPic{
+	width: 200px;
+    height: 100px;
+    float: left;
+    padding: 10px;
+    margin-top: -10px;
+}
+
+.talkPicFull{
+	width: 250px;
+    height: 140px;
+    float: left;
+    padding: 10px;
+    /*margin-top: -10px;*/
+}
+
+.postBtn{
+	color: #fff;
+    background-color: #428bca;
+    border-color: #357ebd;
+    width: 45%;
+    float: left;
+}
+
+.backBtn{
+	color: #fff;
+    background-color: #BF3C3C;
+    border-color: #357ebd;
+    width:45%;
+    float: right;
+    display: block;
+    height:34px;
+
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.fullParagraph {
+	display: block;
+    padding: 9.5px;
+    /*margin: 10px 0 10px 0px;*/
+    margin-top: 15px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom:10px;
+}
+
+
+
+.messageBlock {
+	display: block;
+    padding: 9.5px;
+    /*margin: 10px 0 10px 0px;*/
+    margin-top: 15px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.messageContent{
+	display: inline-block;
+}
+
+.messageDeleteButton{
+	display: inline-block;
+	background: #e6e6e6;
+    border: 1px solid #ccc;
+	width: 30px;
+	height: 30px;
+	border-radius: 10px;
+	text-align: center;
+	color: black;
+}
+
+.messageSender {
+	margin: 0;
+	display: block;
+    margin-top: 15px;
+    line-height: 1.42857143;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    /*border: 1px solid #ccc;*/
+    border-radius: 8px 8px 0px 0px;
+    font-family: Helam,Helvetica,Arial,sans-serif;
+    padding:10px;
+}
+
+.s{
+	display: block;
+    margin-top: 15px;
+    line-height: 1.42857143;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.messageText {
+	font-size: 14px;
+}
+
+.jumbotron{
+	background-color: #f4511e;
+    color: #fff;
+    padding: 100px 25px;
+    font-family: Montserrat, sans-serif;
 }
 
