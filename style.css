@@ -9,6 +9,10 @@ a:hover{
 	color:white;
 }
 
+.col-md-offset-3 {
+    margin-left: 15%;
+}
+
 .addNewCommentTitle{
 	background-color: #f5f5f5;
     border: 1px solid #ccc;
